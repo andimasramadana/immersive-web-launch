@@ -27,7 +27,7 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" data-tour="logo" className="flex items-center gap-3 group">
           <div className="relative w-9 h-9">
             <div className="absolute inset-0 rounded-full gradient-gold opacity-90 group-hover:opacity-100 transition" />
             <div className="absolute inset-[3px] rounded-full bg-heritage-950 grid place-items-center">
@@ -40,11 +40,12 @@ export default function Navbar() {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1" data-tour="nav-links">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
+              data-tour={`nav-${l.label.toLowerCase()}`}
               className="px-4 py-2 text-sm tracking-wide text-muted-foreground hover:text-gold transition relative group"
               activeProps={{ className: "text-gold" }}
             >
