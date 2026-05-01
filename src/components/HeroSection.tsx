@@ -63,6 +63,7 @@ export default function HeroSection() {
           >
             <Link
               to="/jelajahi"
+              data-tour="explore-btn"
               className="group inline-flex items-center gap-2 px-7 py-3.5 gradient-gold text-heritage-950 font-medium tracking-wide rounded-sm shadow-gold hover:shadow-deep transition-all"
             >
               Jelajahi Tempat
