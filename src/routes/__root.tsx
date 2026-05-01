@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import PageTransitionLoader from "@/components/PageTransitionLoader";
+import UserGuide from "@/components/UserGuide";
 
 function NotFoundComponent() {
   return (
@@ -93,6 +94,7 @@ function RootComponent() {
     <>
       <LoadingScreen onFinish={() => setLoading(false)} duration={3500} />
       <PageTransitionLoader />
+      <UserGuide start={!loading} />
       <Navbar />
       <main className="min-h-screen">
         <AnimatePresence mode="wait">
