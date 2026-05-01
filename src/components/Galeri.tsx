@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import SectionHeading from "./SectionHeading";
 import g1 from "@/assets/galeri-1.jpg";
 import g2 from "@/assets/galeri-2.jpg";
@@ -17,6 +18,27 @@ const items = [
 ];
 
 export default function Galeri() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  // Convert vertical wheel into horizontal scroll with smooth easing
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY === 0) return;
+      // Only hijack when there's room to scroll horizontally
+      const max = el.scrollWidth - el.clientWidth;
+      if (max <= 0) return;
+      const atStart = el.scrollLeft <= 0 && e.deltaY < 0;
+      const atEnd = el.scrollLeft >= max - 1 && e.deltaY > 0;
+      if (atStart || atEnd) return;
+      e.preventDefault();
+      el.scrollBy({ left: e.deltaY, behavior: "smooth" });
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
   return (
     <section className="py-24 md:py-32 pt-32">
       <div className="container mx-auto px-6">
@@ -25,10 +47,16 @@ export default function Galeri() {
           eyebrow="Galeri Heritage"
           title="Koleksi"
           highlight="Visual"
-          description="Sebuah perjalanan visual menyusuri koleksi prasasti, naskah, dan peta yang membentuk narasi heritage Pajajaran."
+          description="Sebuah perjalanan visual menyusuri koleksi prasasti, naskah, dan peta yang membentuk narasi heritage Pajajaran. Geser ke samping untuk menjelajah."
         />
+      </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        ref={scrollerRef}
+        className="mt-16 overflow-x-auto overflow-y-hidden scroll-smooth pb-8"
+        style={{ scrollbarWidth: "thin" }}
+      >
+        <div className="flex gap-6 px-6 md:px-12 w-max">
           {items.map((it, i) => (
             <motion.figure
               key={it.title}
@@ -36,7 +64,7 @@ export default function Galeri() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: (i % 3) * 0.1, duration: 0.7 }}
-              className="group relative overflow-hidden rounded-sm border border-gold/15 bg-heritage-900 shadow-deep"
+              className="group relative overflow-hidden rounded-sm border border-gold/15 bg-heritage-900 shadow-deep flex-shrink-0 w-[280px] md:w-[360px]"
             >
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
