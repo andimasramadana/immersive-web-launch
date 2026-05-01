@@ -7,7 +7,6 @@ const links = [
   { to: "/", label: "Beranda" },
   { to: "/galeri", label: "Galeri" },
   { to: "/kelompok", label: "Kelompok" },
-  { to: "/lokasi", label: "Lokasi" },
 ] as const;
 
 export default function Navbar() {
