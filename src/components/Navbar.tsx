@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { to: "/", label: "Beranda" },
-  { to: "/jelajahi", label: "Jelajahi Tempat" },
   { to: "/galeri", label: "Galeri" },
   { to: "/kelompok", label: "Kelompok" },
   { to: "/lokasi", label: "Lokasi" },

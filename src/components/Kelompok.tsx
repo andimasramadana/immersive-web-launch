@@ -2,12 +2,27 @@ import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 
 const members = [
-  { name: "Anggota Satu", role: "Ketua Kelompok", initial: "AS" },
-  { name: "Anggota Dua", role: "Riset Sejarah", initial: "AD" },
-  { name: "Anggota Tiga", role: "Desain Visual", initial: "AT" },
-  { name: "Anggota Empat", role: "Dokumentasi", initial: "AE" },
-  { name: "Anggota Lima", role: "Penulis Konten", initial: "AL" },
-  { name: "Anggota Enam", role: "Editor & Presentasi", initial: "AN" },
+  {
+    name: "Andimas Ramadana",
+    initial: "AR",
+    rayon: "Rayon Pajajaran",
+    role: "Full Stack Developer",
+    motto: "Belajar tanpa henti, berkarya tanpa batas.",
+  },
+  {
+    name: "Richou Alberto Ghani",
+    initial: "RG",
+    rayon: "Rayon Siliwangi",
+    role: "Front End Developer",
+    motto: "Desain yang baik adalah jembatan antara ide dan pengguna.",
+  },
+  {
+    name: "Samuel Sayogo",
+    initial: "SS",
+    rayon: "Rayon Galuh",
+    role: "Back End Developer",
+    motto: "Kode yang rapi hari ini, ketenangan di masa depan.",
+  },
 ];
 
 export default function Kelompok() {
@@ -19,17 +34,17 @@ export default function Kelompok() {
           eyebrow="Tim Kami"
           title="Anggota"
           highlight="Kelompok"
-          description="Proyek heritage ini dikerjakan bersama-sama oleh anggota kelompok dengan peran masing-masing."
+          description="Proyek heritage ini dikerjakan bersama-sama oleh tiga anggota kelompok dengan peran masing-masing."
         />
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {members.map((m, i) => (
             <motion.div
               key={m.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: (i % 3) * 0.1, duration: 0.7 }}
+              transition={{ delay: i * 0.1, duration: 0.7 }}
               whileHover={{ y: -6 }}
               className="group relative glass-heritage p-8 rounded-sm border-t-2 border-gold/40 overflow-hidden"
             >
@@ -42,14 +57,21 @@ export default function Kelompok() {
                 </div>
               </div>
 
-              <h3 className="font-display text-2xl text-parchment mb-1">{m.name}</h3>
-              <p className="text-xs uppercase tracking-[0.3em] text-copper mb-4">{m.role}</p>
+              <h3 className="font-display text-2xl text-parchment mb-1 leading-tight">{m.name}</h3>
+              <p className="text-xs uppercase tracking-[0.3em] text-copper mb-4">{m.rayon}</p>
 
               <div className="ornament-divider w-12" />
 
-              <p className="mt-4 text-sm text-muted-foreground italic">
-                Kontributor proyek heritage Batu Tulis & Museum Peta.
-              </p>
+              <div className="mt-5 space-y-3">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-copper mb-1">Role</p>
+                  <p className="font-display text-base text-gold">{m.role}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-copper mb-1">Motto Hidup</p>
+                  <p className="text-sm text-muted-foreground italic leading-relaxed">"{m.motto}"</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
