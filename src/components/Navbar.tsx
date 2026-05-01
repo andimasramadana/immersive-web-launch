@@ -5,8 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { to: "/", label: "Beranda" },
-  { to: "/batu-tulis", label: "Batu Tulis" },
-  { to: "/museum-peta", label: "Museum Peta" },
+  { to: "/jelajahi", label: "Jelajahi Tempat" },
   { to: "/galeri", label: "Galeri" },
   { to: "/kelompok", label: "Kelompok" },
   { to: "/lokasi", label: "Lokasi" },
@@ -26,9 +25,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "py-3 glass-heritage border-b border-gold/20"
-          : "py-6 bg-transparent"
+        scrolled ? "py-3 glass-heritage border-b border-gold/20" : "py-6 bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
