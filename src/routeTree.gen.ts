@@ -9,8 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MuseumPetaRouteImport } from './routes/museum-peta'
+import { Route as LokasiRouteImport } from './routes/lokasi'
+import { Route as KelompokRouteImport } from './routes/kelompok'
+import { Route as GaleriRouteImport } from './routes/galeri'
+import { Route as BatuTulisRouteImport } from './routes/batu-tulis'
 import { Route as IndexRouteImport } from './routes/index'
 
+const MuseumPetaRoute = MuseumPetaRouteImport.update({
+  id: '/museum-peta',
+  path: '/museum-peta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LokasiRoute = LokasiRouteImport.update({
+  id: '/lokasi',
+  path: '/lokasi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KelompokRoute = KelompokRouteImport.update({
+  id: '/kelompok',
+  path: '/kelompok',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriRoute = GaleriRouteImport.update({
+  id: '/galeri',
+  path: '/galeri',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BatuTulisRoute = BatuTulisRouteImport.update({
+  id: '/batu-tulis',
+  path: '/batu-tulis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +49,96 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/batu-tulis': typeof BatuTulisRoute
+  '/galeri': typeof GaleriRoute
+  '/kelompok': typeof KelompokRoute
+  '/lokasi': typeof LokasiRoute
+  '/museum-peta': typeof MuseumPetaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/batu-tulis': typeof BatuTulisRoute
+  '/galeri': typeof GaleriRoute
+  '/kelompok': typeof KelompokRoute
+  '/lokasi': typeof LokasiRoute
+  '/museum-peta': typeof MuseumPetaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/batu-tulis': typeof BatuTulisRoute
+  '/galeri': typeof GaleriRoute
+  '/kelompok': typeof KelompokRoute
+  '/lokasi': typeof LokasiRoute
+  '/museum-peta': typeof MuseumPetaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/batu-tulis'
+    | '/galeri'
+    | '/kelompok'
+    | '/lokasi'
+    | '/museum-peta'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/batu-tulis' | '/galeri' | '/kelompok' | '/lokasi' | '/museum-peta'
+  id:
+    | '__root__'
+    | '/'
+    | '/batu-tulis'
+    | '/galeri'
+    | '/kelompok'
+    | '/lokasi'
+    | '/museum-peta'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BatuTulisRoute: typeof BatuTulisRoute
+  GaleriRoute: typeof GaleriRoute
+  KelompokRoute: typeof KelompokRoute
+  LokasiRoute: typeof LokasiRoute
+  MuseumPetaRoute: typeof MuseumPetaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/museum-peta': {
+      id: '/museum-peta'
+      path: '/museum-peta'
+      fullPath: '/museum-peta'
+      preLoaderRoute: typeof MuseumPetaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lokasi': {
+      id: '/lokasi'
+      path: '/lokasi'
+      fullPath: '/lokasi'
+      preLoaderRoute: typeof LokasiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kelompok': {
+      id: '/kelompok'
+      path: '/kelompok'
+      fullPath: '/kelompok'
+      preLoaderRoute: typeof KelompokRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeri': {
+      id: '/galeri'
+      path: '/galeri'
+      fullPath: '/galeri'
+      preLoaderRoute: typeof GaleriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/batu-tulis': {
+      id: '/batu-tulis'
+      path: '/batu-tulis'
+      fullPath: '/batu-tulis'
+      preLoaderRoute: typeof BatuTulisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,16 +151,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BatuTulisRoute: BatuTulisRoute,
+  GaleriRoute: GaleriRoute,
+  KelompokRoute: KelompokRoute,
+  LokasiRoute: LokasiRoute,
+  MuseumPetaRoute: MuseumPetaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
