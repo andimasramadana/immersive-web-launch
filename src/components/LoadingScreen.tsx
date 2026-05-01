@@ -166,7 +166,7 @@ export default function LoadingScreen({ onFinish, duration = 3500 }: LoadingScre
                 Heritage of Pajajaran
               </p>
               <h1 className="font-display text-4xl md:text-6xl shimmer-text mb-2">
-                Batu Tulis
+                Project Sejarah
               </h1>
               <p className="text-sm md:text-base text-muted-foreground italic">
                 Menyusuri jejak prasasti & peta kuno Nusantara

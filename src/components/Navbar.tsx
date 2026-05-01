@@ -31,11 +31,11 @@ export default function Navbar() {
           <div className="relative w-9 h-9">
             <div className="absolute inset-0 rounded-full gradient-gold opacity-90 group-hover:opacity-100 transition" />
             <div className="absolute inset-[3px] rounded-full bg-heritage-950 grid place-items-center">
-              <span className="font-display text-gold text-sm">BT</span>
+              <span className="font-display text-gold text-sm">PS</span>
             </div>
           </div>
           <div className="leading-tight">
-            <p className="font-display text-base text-parchment tracking-wider">Batu Tulis</p>
+            <p className="font-display text-base text-parchment tracking-wider">Project Sejarah</p>
             <p className="text-[10px] uppercase tracking-[0.3em] text-copper">Heritage Project</p>
           </div>
         </Link>
