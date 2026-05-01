@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-bogor.jpg";
 
 export default function HeroSection() {
@@ -67,13 +67,6 @@ export default function HeroSection() {
             >
               Jelajahi Tempat
               <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
-            </Link>
-            <Link
-              to="/lokasi"
-              className="inline-flex items-center gap-2 px-7 py-3.5 border border-gold/40 text-gold tracking-wide rounded-sm hover:bg-gold/10 transition"
-            >
-              <MapPin size={16} />
-              Lihat Lokasi Tempat
             </Link>
           </motion.div>
 

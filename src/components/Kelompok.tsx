@@ -8,6 +8,7 @@ const members = [
     rayon: "Rayon Pajajaran",
     role: "Full Stack Developer",
     motto: "Belajar tanpa henti, berkarya tanpa batas.",
+    photo: "", // TODO: tambahkan path foto, contoh: "/anggota/andimas.jpg"
   },
   {
     name: "Richou Alberto Ghani",
@@ -15,6 +16,7 @@ const members = [
     rayon: "Rayon Siliwangi",
     role: "Front End Developer",
     motto: "Desain yang baik adalah jembatan antara ide dan pengguna.",
+    photo: "",
   },
   {
     name: "Samuel Sayogo",
@@ -22,6 +24,7 @@ const members = [
     rayon: "Rayon Galuh",
     role: "Back End Developer",
     motto: "Kode yang rapi hari ini, ketenangan di masa depan.",
+    photo: "",
   },
 ];
 
@@ -44,25 +47,39 @@ export default function Kelompok() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: i * 0.1, duration: 0.7 }}
+              transition={{ delay: i * 0.12, duration: 0.7 }}
               whileHover={{ y: -6 }}
-              className="group relative glass-heritage p-8 rounded-sm border-t-2 border-gold/40 overflow-hidden"
+              className="group relative glass-heritage p-8 rounded-sm border-t-2 border-gold/40 overflow-hidden text-center"
             >
               <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full gradient-gold opacity-10 blur-3xl group-hover:opacity-25 transition duration-700" />
 
-              <div className="relative w-20 h-20 mb-6">
-                <div className="absolute inset-0 rounded-full gradient-gold opacity-90" />
-                <div className="absolute inset-[2px] rounded-full bg-heritage-900 grid place-items-center">
-                  <span className="font-display text-2xl gradient-text-gold">{m.initial}</span>
+              {/* Profile photo */}
+              <div className="relative mx-auto w-32 h-32 mb-6">
+                <div className="absolute -inset-1 rounded-full gradient-gold opacity-90 group-hover:opacity-100 transition" />
+                <div className="absolute inset-0 rounded-full bg-heritage-900 overflow-hidden border-2 border-heritage-950">
+                  {m.photo ? (
+                    <img
+                      src={m.photo}
+                      alt={`Foto ${m.name}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      width={256}
+                      height={256}
+                    />
+                  ) : (
+                    <div className="w-full h-full grid place-items-center">
+                      <span className="font-display text-4xl gradient-text-gold">{m.initial}</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
               <h3 className="font-display text-2xl text-parchment mb-1 leading-tight">{m.name}</h3>
-              <p className="text-xs uppercase tracking-[0.3em] text-copper mb-4">{m.rayon}</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-copper mb-4">{m.rayon}</p>
 
-              <div className="ornament-divider w-12" />
+              <div className="ornament-divider w-16 mx-auto" />
 
-              <div className="mt-5 space-y-3">
+              <div className="mt-5 space-y-4">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-copper mb-1">Role</p>
                   <p className="font-display text-base text-gold">{m.role}</p>

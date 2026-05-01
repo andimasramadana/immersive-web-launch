@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MuseumPetaRouteImport } from './routes/museum-peta'
-import { Route as LokasiRouteImport } from './routes/lokasi'
 import { Route as KelompokRouteImport } from './routes/kelompok'
 import { Route as JelajahiRouteImport } from './routes/jelajahi'
 import { Route as GaleriRouteImport } from './routes/galeri'
@@ -20,11 +19,6 @@ import { Route as IndexRouteImport } from './routes/index'
 const MuseumPetaRoute = MuseumPetaRouteImport.update({
   id: '/museum-peta',
   path: '/museum-peta',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LokasiRoute = LokasiRouteImport.update({
-  id: '/lokasi',
-  path: '/lokasi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KelompokRoute = KelompokRouteImport.update({
@@ -59,7 +53,6 @@ export interface FileRoutesByFullPath {
   '/galeri': typeof GaleriRoute
   '/jelajahi': typeof JelajahiRoute
   '/kelompok': typeof KelompokRoute
-  '/lokasi': typeof LokasiRoute
   '/museum-peta': typeof MuseumPetaRoute
 }
 export interface FileRoutesByTo {
@@ -68,7 +61,6 @@ export interface FileRoutesByTo {
   '/galeri': typeof GaleriRoute
   '/jelajahi': typeof JelajahiRoute
   '/kelompok': typeof KelompokRoute
-  '/lokasi': typeof LokasiRoute
   '/museum-peta': typeof MuseumPetaRoute
 }
 export interface FileRoutesById {
@@ -78,7 +70,6 @@ export interface FileRoutesById {
   '/galeri': typeof GaleriRoute
   '/jelajahi': typeof JelajahiRoute
   '/kelompok': typeof KelompokRoute
-  '/lokasi': typeof LokasiRoute
   '/museum-peta': typeof MuseumPetaRoute
 }
 export interface FileRouteTypes {
@@ -89,7 +80,6 @@ export interface FileRouteTypes {
     | '/galeri'
     | '/jelajahi'
     | '/kelompok'
-    | '/lokasi'
     | '/museum-peta'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -98,7 +88,6 @@ export interface FileRouteTypes {
     | '/galeri'
     | '/jelajahi'
     | '/kelompok'
-    | '/lokasi'
     | '/museum-peta'
   id:
     | '__root__'
@@ -107,7 +96,6 @@ export interface FileRouteTypes {
     | '/galeri'
     | '/jelajahi'
     | '/kelompok'
-    | '/lokasi'
     | '/museum-peta'
   fileRoutesById: FileRoutesById
 }
@@ -117,7 +105,6 @@ export interface RootRouteChildren {
   GaleriRoute: typeof GaleriRoute
   JelajahiRoute: typeof JelajahiRoute
   KelompokRoute: typeof KelompokRoute
-  LokasiRoute: typeof LokasiRoute
   MuseumPetaRoute: typeof MuseumPetaRoute
 }
 
@@ -128,13 +115,6 @@ declare module '@tanstack/react-router' {
       path: '/museum-peta'
       fullPath: '/museum-peta'
       preLoaderRoute: typeof MuseumPetaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lokasi': {
-      id: '/lokasi'
-      path: '/lokasi'
-      fullPath: '/lokasi'
-      preLoaderRoute: typeof LokasiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kelompok': {
@@ -181,7 +161,6 @@ const rootRouteChildren: RootRouteChildren = {
   GaleriRoute: GaleriRoute,
   JelajahiRoute: JelajahiRoute,
   KelompokRoute: KelompokRoute,
-  LokasiRoute: LokasiRoute,
   MuseumPetaRoute: MuseumPetaRoute,
 }
 export const routeTree = rootRouteImport
