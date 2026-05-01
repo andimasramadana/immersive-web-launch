@@ -77,8 +77,8 @@ export default function HeroSection() {
             className="mt-16 grid grid-cols-3 gap-8 max-w-md"
           >
             {[
-              { n: "2", l: "Tempat heritage" },
-              { n: "VII", l: "Baris aksara" },
+              { n: "2", l: "Tempat bersejarah" },
+              { n: "3", l: "Developer" },
               { n: "Bogor", l: "Tanah Pajajaran" },
             ].map((s) => (
               <div key={s.l}>
