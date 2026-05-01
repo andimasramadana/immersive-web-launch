@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import heroImg from "@/assets/hero-batu-tulis.jpg";
+import { ArrowRight, MapPin } from "lucide-react";
+import heroImg from "@/assets/hero-bogor.jpg";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background image with parallax-like scale */}
       <motion.div
         initial={{ scale: 1.15, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -15,16 +14,15 @@ export default function HeroSection() {
       >
         <img
           src={heroImg}
-          alt="Prasasti Batu Tulis di museum heritage"
+          alt="Pemandangan Kota Bogor di senja hari dengan gunung dan kabut tropis"
           className="absolute inset-0 w-full h-full object-cover"
           width={1920}
-          height={1080}
+          height={1280}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-heritage-950/70 via-heritage-950/50 to-heritage-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-heritage-950/70 via-heritage-950/55 to-heritage-950" />
         <div className="absolute inset-0 bg-gradient-to-r from-heritage-950 via-heritage-950/30 to-transparent" />
       </motion.div>
 
-      {/* Content */}
       <div className="relative z-10 container mx-auto px-6 pt-32 pb-20">
         <div className="max-w-2xl">
           <motion.p
@@ -33,7 +31,7 @@ export default function HeroSection() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xs uppercase tracking-[0.5em] text-copper mb-6"
           >
-            — Warisan Sunda Pajajaran
+            — Warisan Tanah Sunda
           </motion.p>
 
           <motion.h1
@@ -42,9 +40,9 @@ export default function HeroSection() {
             transition={{ delay: 0.55, duration: 1 }}
             className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.05] mb-6"
           >
-            Jejak <span className="gradient-text-gold italic">Prasasti</span>
+            Dua Tempat <span className="gradient-text-gold italic">Bersejarah</span>
             <br />
-            yang Berbicara
+            Berpengaruh di Bogor
           </motion.h1>
 
           <motion.p
@@ -53,8 +51,8 @@ export default function HeroSection() {
             transition={{ delay: 0.8, duration: 0.9 }}
             className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-xl"
           >
-            Sebuah penghormatan pada Prasasti Batu Tulis dan koleksi peta kuno Nusantara—
-            menelusuri narasi sejarah yang terukir di batu dan tergambar di lembar tua.
+            Menelusuri jejak Pajajaran lewat Prasasti Batu Tulis dan koleksi peta kuno
+            di Museum Peta Bogor — dua saksi bisu dari perjalanan panjang Nusantara.
           </motion.p>
 
           <motion.div
@@ -64,17 +62,18 @@ export default function HeroSection() {
             className="flex flex-wrap gap-4"
           >
             <Link
-              to="/batu-tulis"
+              to="/jelajahi"
               className="group inline-flex items-center gap-2 px-7 py-3.5 gradient-gold text-heritage-950 font-medium tracking-wide rounded-sm shadow-gold hover:shadow-deep transition-all"
             >
-              Jelajahi Prasasti
+              Jelajahi Tempat
               <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
             </Link>
             <Link
-              to="/galeri"
+              to="/lokasi"
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-gold/40 text-gold tracking-wide rounded-sm hover:bg-gold/10 transition"
             >
-              Lihat Galeri
+              <MapPin size={16} />
+              Lihat Lokasi Tempat
             </Link>
           </motion.div>
 
@@ -85,9 +84,9 @@ export default function HeroSection() {
             className="mt-16 grid grid-cols-3 gap-8 max-w-md"
           >
             {[
-              { n: "1533", l: "Diperkirakan dibuat" },
+              { n: "2", l: "Tempat heritage" },
               { n: "VII", l: "Baris aksara" },
-              { n: "Bogor", l: "Lokasi situs" },
+              { n: "Bogor", l: "Tanah Pajajaran" },
             ].map((s) => (
               <div key={s.l}>
                 <div className="font-display text-2xl md:text-3xl gradient-text-gold">{s.n}</div>
@@ -98,7 +97,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
