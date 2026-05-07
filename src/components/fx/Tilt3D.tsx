@@ -1,5 +1,5 @@
 import { useRef, ReactNode } from "react";
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring, useMotionTemplate } from "framer-motion";
 
 interface Props {
   children: ReactNode;
