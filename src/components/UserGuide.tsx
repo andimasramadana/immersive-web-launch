@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X, Sparkles } from "lucide-react";
+import MagneticButton from "./fx/MagneticButton";
 
 interface UserGuideProps {
   /** Set true once the loading screen finishes so the guide appears after it. */
@@ -350,12 +351,13 @@ export default function UserGuide({ start }: UserGuideProps) {
                   >
                     Lewati
                   </button>
-                  <button
+                  <MagneticButton
                     onClick={next}
-                    className="inline-flex items-center gap-1.5 rounded-sm gradient-gold px-4 py-2 text-[11px] font-medium uppercase tracking-[0.25em] text-heritage-950 shadow-gold hover:opacity-95 transition"
+                    strength={10}
+                    className="rounded-sm gradient-gold-animated px-4 py-2 text-[11px] font-medium uppercase tracking-[0.25em] text-heritage-950 shadow-gold hover:opacity-95 transition"
                   >
                     {isLast ? "Selesai" : "Lanjut"} <ChevronRight size={13} />
-                  </button>
+                  </MagneticButton>
                 </div>
               </div>
             </div>
