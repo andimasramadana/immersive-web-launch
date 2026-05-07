@@ -63,14 +63,16 @@ export default function MuseumPetaSection() {
         >
           <div className="absolute -inset-6 gradient-gold-animated opacity-20 blur-3xl rounded-full" />
           <Tilt3D className="rounded-sm" max={12}>
-            <img
-              src={petaImg}
-              alt="Peta antik Nusantara di Museum Peta"
-              loading="lazy"
-              width={1920}
-              height={1280}
-              className="w-full aspect-[3/2] object-cover rounded-sm shadow-deep border border-gold/20"
-            />
+            <MaskReveal direction="left" className="rounded-sm">
+              <img
+                src={petaImg}
+                alt="Peta antik Nusantara di Museum Peta"
+                loading="lazy"
+                width={1920}
+                height={1280}
+                className="w-full aspect-[3/2] object-cover rounded-sm shadow-deep border border-gold/20"
+              />
+            </MaskReveal>
             <div
               className="absolute top-4 left-4 glass-heritage px-4 py-2 rounded-sm"
               style={{ transform: "translateZ(60px)" }}
