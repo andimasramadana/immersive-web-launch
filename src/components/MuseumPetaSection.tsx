@@ -1,11 +1,26 @@
 import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
+import Tilt3D from "./fx/Tilt3D";
+import ParallaxY from "./fx/ParallaxY";
 import petaImg from "@/assets/museum-peta.jpg";
 
 export default function MuseumPetaSection() {
   return (
-    <section id="museum-peta" className="relative py-24 md:py-32 bg-heritage-900/40">
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+    <section id="museum-peta" className="relative py-24 md:py-32 bg-heritage-900/40 overflow-hidden">
+      <ParallaxY
+        offset={100}
+        className="pointer-events-none absolute top-10 right-0 h-[420px] w-[420px] rounded-full bg-gold/10 blur-3xl"
+      >
+        <span />
+      </ParallaxY>
+      <ParallaxY
+        offset={-80}
+        className="pointer-events-none absolute bottom-0 -left-10 h-[340px] w-[340px] rounded-full bg-copper/10 blur-3xl"
+      >
+        <span />
+      </ParallaxY>
+
+      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative">
         <div className="order-2 lg:order-1">
           <SectionHeading
             eyebrow="Museum Peta"
@@ -43,8 +58,8 @@ export default function MuseumPetaSection() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="order-1 lg:order-2 relative perspective-1000"
         >
-          <div className="absolute -inset-6 gradient-gold opacity-15 blur-3xl rounded-full" />
-          <div className="relative preserve-3d">
+          <div className="absolute -inset-6 gradient-gold-animated opacity-20 blur-3xl rounded-full" />
+          <Tilt3D className="rounded-sm" max={12}>
             <img
               src={petaImg}
               alt="Peta antik Nusantara di Museum Peta"
@@ -53,10 +68,13 @@ export default function MuseumPetaSection() {
               height={1280}
               className="w-full aspect-[3/2] object-cover rounded-sm shadow-deep border border-gold/20"
             />
-            <div className="absolute top-4 left-4 glass-heritage px-4 py-2 rounded-sm">
+            <div
+              className="absolute top-4 left-4 glass-heritage px-4 py-2 rounded-sm"
+              style={{ transform: "translateZ(60px)" }}
+            >
               <p className="text-[10px] uppercase tracking-[0.3em] text-gold">Est. 1745</p>
             </div>
-          </div>
+          </Tilt3D>
         </motion.div>
       </div>
     </section>
