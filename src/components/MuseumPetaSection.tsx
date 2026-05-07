@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import Tilt3D from "./fx/Tilt3D";
 import ParallaxY from "./fx/ParallaxY";
+import MaskReveal from "./fx/MaskReveal";
+import GoldenMotes from "./fx/GoldenMotes";
 import petaImg from "@/assets/museum-peta.jpg";
 
 export default function MuseumPetaSection() {
