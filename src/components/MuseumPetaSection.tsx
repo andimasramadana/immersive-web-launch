@@ -2,11 +2,14 @@ import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import Tilt3D from "./fx/Tilt3D";
 import ParallaxY from "./fx/ParallaxY";
+import MaskReveal from "./fx/MaskReveal";
+import GoldenMotes from "./fx/GoldenMotes";
 import petaImg from "@/assets/museum-peta.jpg";
 
 export default function MuseumPetaSection() {
   return (
     <section id="museum-peta" className="relative py-24 md:py-32 bg-heritage-900/40 overflow-hidden">
+      <GoldenMotes count={20} />
       <ParallaxY
         offset={100}
         className="pointer-events-none absolute top-10 right-0 h-[420px] w-[420px] rounded-full bg-gold/10 blur-3xl"
@@ -60,14 +63,16 @@ export default function MuseumPetaSection() {
         >
           <div className="absolute -inset-6 gradient-gold-animated opacity-20 blur-3xl rounded-full" />
           <Tilt3D className="rounded-sm" max={12}>
-            <img
-              src={petaImg}
-              alt="Peta antik Nusantara di Museum Peta"
-              loading="lazy"
-              width={1920}
-              height={1280}
-              className="w-full aspect-[3/2] object-cover rounded-sm shadow-deep border border-gold/20"
-            />
+            <MaskReveal direction="left" className="rounded-sm">
+              <img
+                src={petaImg}
+                alt="Peta antik Nusantara di Museum Peta"
+                loading="lazy"
+                width={1920}
+                height={1280}
+                className="w-full aspect-[3/2] object-cover rounded-sm shadow-deep border border-gold/20"
+              />
+            </MaskReveal>
             <div
               className="absolute top-4 left-4 glass-heritage px-4 py-2 rounded-sm"
               style={{ transform: "translateZ(60px)" }}
