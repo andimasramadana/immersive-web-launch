@@ -58,11 +58,7 @@ export default function Tilt3D({
           aria-hidden
           className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 mix-blend-overlay transition-opacity duration-300 hover:opacity-100"
           style={{
-            background: useTransform(
-              [glareX, glareY],
-              ([gx, gy]) =>
-                `radial-gradient(circle at ${gx} ${gy}, oklch(0.95 0.08 82 / 0.55), transparent 55%)`,
-            ),
+            background: useMotionTemplate`radial-gradient(circle at ${glareX} ${glareY}, oklch(0.95 0.08 82 / 0.55), transparent 55%)`,
           }}
         />
       )}
