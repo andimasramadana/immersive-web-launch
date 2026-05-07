@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import Tilt3D from "./fx/Tilt3D";
 import ParallaxY from "./fx/ParallaxY";
+import MaskReveal from "./fx/MaskReveal";
+import GoldenMotes from "./fx/GoldenMotes";
 import detailImg from "@/assets/batu-tulis-detail.jpg";
 
 const facts = [
@@ -14,6 +16,7 @@ const facts = [
 export default function BatuTulisSection() {
   return (
     <section id="batu-tulis" className="relative py-24 md:py-32 overflow-hidden">
+      <GoldenMotes count={22} />
       <ParallaxY
         offset={120}
         className="pointer-events-none absolute -top-20 -left-20 h-[420px] w-[420px] rounded-full bg-gold/10 blur-3xl"
@@ -37,14 +40,16 @@ export default function BatuTulisSection() {
         >
           <Tilt3D className="rounded-sm" max={14}>
             <div className="absolute -inset-4 gradient-gold-animated opacity-25 blur-3xl" />
-            <img
-              src={detailImg}
-              alt="Detail aksara Sunda Kuno pada Prasasti Batu Tulis"
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="relative w-full aspect-square object-cover rounded-sm shadow-deep border border-gold/20"
-            />
+            <MaskReveal className="rounded-sm aspect-square">
+              <img
+                src={detailImg}
+                alt="Detail aksara Sunda Kuno pada Prasasti Batu Tulis"
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="relative w-full aspect-square object-cover rounded-sm shadow-deep border border-gold/20"
+              />
+            </MaskReveal>
             <div
               className="absolute -bottom-6 -right-6 glass-heritage p-5 rounded-sm shadow-gold max-w-[220px]"
               style={{ transform: "translateZ(60px)" }}
