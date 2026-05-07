@@ -9,6 +9,7 @@ import petaImg from "@/assets/museum-peta.jpg";
 export default function MuseumPetaSection() {
   return (
     <section id="museum-peta" className="relative py-24 md:py-32 bg-heritage-900/40 overflow-hidden">
+      <GoldenMotes count={20} />
       <ParallaxY
         offset={100}
         className="pointer-events-none absolute top-10 right-0 h-[420px] w-[420px] rounded-full bg-gold/10 blur-3xl"
