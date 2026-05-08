@@ -12,12 +12,42 @@ import detail from "@/assets/batu-tulis-detail.jpg";
 import peta from "@/assets/museum-peta.jpg";
 
 const items = [
-  { src: g1, title: "Fragmen Batu", caption: "Pecahan prasasti dari situs penggalian Bogor." },
-  { src: g2, title: "Mahkota Bronze", caption: "Artefak ceremonial era Pajajaran." },
-  { src: g3, title: "Naskah Lontar", caption: "Naskah aksara Sunda Kuno yang terjaga." },
-  { src: g4, title: "Relief Raja", caption: "Patung relief Sri Baduga Maharaja." },
-  { src: detail, title: "Aksara", caption: "Detail aksara di permukaan prasasti." },
-  { src: peta, title: "Peta Antik", caption: "Kartografi dunia abad ke-18." },
+  {
+    src: g1,
+    title: "Prasasti Batu Tulis",
+    caption: "Batu prasasti peninggalan Sri Baduga Maharaja di Bogor Selatan.",
+    tag: "Batu Tulis",
+  },
+  {
+    src: detail,
+    title: "Aksara Sunda Kuno",
+    caption: "Detail pahatan aksara Sunda Kuno pada permukaan prasasti.",
+    tag: "Batu Tulis",
+  },
+  {
+    src: g3,
+    title: "Cungkup Pelindung",
+    caption: "Bangunan cungkup yang melindungi prasasti dari cuaca.",
+    tag: "Batu Tulis",
+  },
+  {
+    src: peta,
+    title: "Peta Kuno Nusantara",
+    caption: "Koleksi peta antik Nusantara di Museum PETA Bogor.",
+    tag: "Museum Peta",
+  },
+  {
+    src: g2,
+    title: "Diorama Pejuang PETA",
+    caption: "Diorama perjuangan tentara Pembela Tanah Air era 1943–1945.",
+    tag: "Museum Peta",
+  },
+  {
+    src: g4,
+    title: "Relief & Senjata PETA",
+    caption: "Relief sejarah dan koleksi senjata pejuang PETA Bogor.",
+    tag: "Museum Peta",
+  },
 ];
 
 export default function Galeri() {
