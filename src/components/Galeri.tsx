@@ -4,48 +4,48 @@ import SectionHeading from "./SectionHeading";
 import Tilt3D from "./fx/Tilt3D";
 import MaskReveal from "./fx/MaskReveal";
 import GoldenMotes from "./fx/GoldenMotes";
-import g1 from "@/assets/galeri-1.jpg";
-import g2 from "@/assets/galeri-2.jpg";
-import g3 from "@/assets/galeri-3.jpg";
-import g4 from "@/assets/galeri-4.jpg";
-import detail from "@/assets/batu-tulis-detail.jpg";
-import peta from "@/assets/museum-peta.jpg";
+import btInside from "@/assets/galeri/bt-inside.jpg";
+import btText from "@/assets/galeri/bt-text.jpg";
+import btHousing from "@/assets/galeri/bt-housing.jpg";
+import petaHall from "@/assets/galeri/peta-hall.jpg";
+import petaTank from "@/assets/galeri/peta-tank.jpg";
+import petaSudirman from "@/assets/galeri/peta-sudirman.jpg";
 
 const items = [
   {
-    src: g1,
+    src: btInside,
     title: "Prasasti Batu Tulis",
     caption: "Batu prasasti peninggalan Sri Baduga Maharaja di Bogor Selatan.",
     tag: "Batu Tulis",
   },
   {
-    src: detail,
+    src: btText,
     title: "Aksara Sunda Kuno",
     caption: "Detail pahatan aksara Sunda Kuno pada permukaan prasasti.",
     tag: "Batu Tulis",
   },
   {
-    src: g3,
+    src: btHousing,
     title: "Cungkup Pelindung",
-    caption: "Bangunan cungkup yang melindungi prasasti dari cuaca.",
+    caption: "Bangunan cungkup yang melindungi situs Prasasti Batu Tulis.",
     tag: "Batu Tulis",
   },
   {
-    src: peta,
-    title: "Peta Kuno Nusantara",
-    caption: "Koleksi peta antik Nusantara di Museum PETA Bogor.",
+    src: petaHall,
+    title: "Gedung Museum PETA",
+    caption: "Bangunan utama Museum Pembela Tanah Air di Bogor.",
     tag: "Museum Peta",
   },
   {
-    src: g2,
-    title: "Diorama Pejuang PETA",
-    caption: "Diorama perjuangan tentara Pembela Tanah Air era 1943–1945.",
+    src: petaTank,
+    title: "Kendaraan Lapis Baja",
+    caption: "AMX-13 APC yang dipajang di pelataran Museum PETA.",
     tag: "Museum Peta",
   },
   {
-    src: g4,
-    title: "Relief & Senjata PETA",
-    caption: "Relief sejarah dan koleksi senjata pejuang PETA Bogor.",
+    src: petaSudirman,
+    title: "Patung Jenderal Sudirman",
+    caption: "Patung penghormatan kepada Jenderal Sudirman di Museum PETA.",
     tag: "Museum Peta",
   },
 ];
