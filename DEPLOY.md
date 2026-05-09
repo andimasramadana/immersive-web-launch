@@ -1,57 +1,62 @@
 # Cara Hosting Project Ini
 
-Project ini dibangun dengan **TanStack Start** + **Cloudflare Workers** (SSR).
-Tidak ada `index.html` — HTML digenerate server-side oleh `src/routes/__root.tsx`.
+Project ini dibangun dengan **TanStack Start** (SSR di atas Cloudflare Workers).
+Karena Vercel & Netlify tidak menjalankan Cloudflare Worker, kita **prerender**
+halaman utama ke HTML statis lalu serve sebagai **SPA**.
+
+Konfigurasi sudah disiapkan — **tidak perlu mengubah apapun lagi**, tinggal
+import repo ke Vercel/Netlify dan deploy.
 
 ---
 
 ## 🥇 Opsi 1: Lovable Publish (Termudah)
 
-1. Klik tombol **Publish** di pojok kanan atas editor Lovable
-2. Selesai — live di `xxx.lovable.app`
-
-Tidak perlu akun/setup apapun. Cocok untuk demo dan production sederhana.
+Klik tombol **Publish** di pojok kanan atas editor → live di `xxx.lovable.app`.
 
 ---
 
-## 🥈 Opsi 2: Cloudflare Workers (Hosting Sendiri, Gratis)
+## 🥈 Opsi 2: Vercel
 
-Project ini **memang dibuat untuk Cloudflare**, jadi setup-nya minimal.
-
-### Langkah:
-
-1. **Buat akun gratis** di [cloudflare.com](https://cloudflare.com)
-2. Download codebase (Code Editor → Download codebase) atau push ke GitHub
-3. Di terminal lokal:
-   ```bash
-   npm install
-   npx wrangler login          # login ke akun Cloudflare (sekali saja)
-   npm run deploy              # build + deploy
-   ```
-4. Selesai — Cloudflare akan kasih URL `tanstack-start-app.<your-account>.workers.dev`
-
-### Auto-deploy dari GitHub (opsional):
-- Buka [dash.cloudflare.com](https://dash.cloudflare.com) → Workers & Pages → Create → Connect Git
-- Pilih repo Anda
-- Build command: `npm run build`
-- Deploy command: `npx wrangler deploy`
-- Setiap push ke `main` akan auto-deploy
+1. Push project ke GitHub
+2. Buka [vercel.com](https://vercel.com) → **Add New Project** → Import repo
+3. **Jangan ubah setting apapun** — Vercel akan baca `vercel.json` otomatis:
+   - Build command: `vite build && node scripts/prerender.mjs`
+   - Output directory: `dist/client`
+   - SPA rewrite ke `index.html`
+4. Klik **Deploy**
 
 ---
 
-## ❌ Vercel / Netlify
+## 🥉 Opsi 3: Netlify
 
-**Tidak bisa langsung.** Vercel & Netlify tidak menjalankan Cloudflare Worker.
-Untuk pakai mereka, harus ganti adapter di `vite.config.ts` dan `wrangler.jsonc`
-harus dihapus — ini perubahan besar pada konfigurasi build.
-
-Saran: pakai **Lovable Publish** atau **Cloudflare Workers** (Opsi 1 atau 2).
+1. Push project ke GitHub
+2. Buka [netlify.com](https://netlify.com) → **Add new site** → Import repo
+3. **Jangan ubah setting apapun** — Netlify akan baca `netlify.toml` otomatis
+4. Klik **Deploy site**
 
 ---
 
-## Kenapa tidak ada `index.html`?
+## 🟢 Opsi 4: Cloudflare Workers (Native, paling optimal)
 
-TanStack Start adalah framework **SSR (Server-Side Rendering)**. HTML-nya dibuat
-oleh server (Worker) saat user request, dari `src/routes/__root.tsx` →
-`shellComponent`. Menambahkan `index.html` manual akan bentrok dan justru
-membuat halaman blank.
+```bash
+npm install
+npx wrangler login
+npm run deploy
+```
+
+---
+
+## Bagaimana cara kerjanya (Vercel/Netlify)?
+
+1. `vite build` → menghasilkan bundle Worker + asset client di `dist/`
+2. `scripts/prerender.mjs` → menjalankan Worker secara lokal (via Miniflare),
+   lalu fetch route utama (`/`, `/batu-tulis`, `/museum-peta`, `/galeri`,
+   `/jelajahi`, `/kelompok`) dan menyimpan HTML hasil render ke
+   `dist/client/<route>/index.html` lengkap dengan path asset yang benar
+3. Vercel/Netlify serve `dist/client` sebagai static site, dengan SPA fallback
+   untuk semua route lain → router TanStack ambil alih di sisi client
+
+**Catatan:** Server Functions (`createServerFn`) atau API routes
+(`src/routes/api/*`) **tidak akan jalan** di Vercel/Netlify dengan setup ini —
+hanya frontend (UI, animasi, galeri, navigasi) yang berfungsi. Untuk fitur
+backend penuh, gunakan Lovable Publish atau Cloudflare Workers.
