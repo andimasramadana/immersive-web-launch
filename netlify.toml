@@ -1,11 +1,10 @@
 [build]
-  command = "vite build && node scripts/prerender.mjs"
-  publish = "dist/client"
+  command = "vite build"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# SPA fallback — semua route yang bukan file statis di-rewrite ke index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"

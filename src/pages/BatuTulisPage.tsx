@@ -1,17 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import AnimatedPage from "@/components/AnimatedPage";
 import BatuTulisSection from "@/components/BatuTulisSection";
 import LocationCard from "@/components/LocationCard";
 import ExploreNav from "@/components/ExploreNav";
 
-export const Route = createFileRoute("/batu-tulis")({
-  head: () => ({
-    meta: [
-      { title: "Prasasti Batu Tulis — Heritage" },
-      { name: "description", content: "Sejarah, aksara, dan lokasi Prasasti Batu Tulis di Bogor." },
-    ],
-  }),
-  component: () => (
+export default function BatuTulisPage() {
+  useEffect(() => {
+    document.title = "Prasasti Batu Tulis — Heritage";
+  }, []);
+  return (
     <AnimatedPage>
       <div className="pt-24">
         <BatuTulisSection />
@@ -27,5 +24,5 @@ export const Route = createFileRoute("/batu-tulis")({
         <ExploreNav nextTo="/museum-peta" nextLabel="Museum Peta" />
       </div>
     </AnimatedPage>
-  ),
-});
+  );
+}

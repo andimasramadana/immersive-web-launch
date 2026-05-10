@@ -1,10 +1,10 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import MagneticButton from "./fx/MagneticButton";
 
 interface Props {
-  nextTo?: "/batu-tulis" | "/museum-peta";
+  nextTo?: string;
   nextLabel?: string;
 }
 

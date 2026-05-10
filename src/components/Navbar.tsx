@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { NavLink as Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -45,9 +45,13 @@ export default function Navbar() {
             <Link
               key={l.to}
               to={l.to}
+              end={l.to === "/"}
               data-tour={`nav-${l.label.toLowerCase()}`}
-              className="px-4 py-2 text-sm tracking-wide text-muted-foreground hover:text-gold transition relative group"
-              activeProps={{ className: "text-gold" }}
+              className={({ isActive }) =>
+                `px-4 py-2 text-sm tracking-wide hover:text-gold transition relative group ${
+                  isActive ? "text-gold" : "text-muted-foreground"
+                }`
+              }
             >
               {l.label}
               <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-px bg-gold group-hover:w-6 transition-all duration-300" />
@@ -77,9 +81,13 @@ export default function Navbar() {
                 <Link
                   key={l.to}
                   to={l.to}
+                  end={l.to === "/"}
                   onClick={() => setOpen(false)}
-                  className="py-3 text-sm tracking-wide text-muted-foreground hover:text-gold border-b border-gold/10"
-                  activeProps={{ className: "text-gold" }}
+                  className={({ isActive }) =>
+                    `py-3 text-sm tracking-wide hover:text-gold border-b border-gold/10 ${
+                      isActive ? "text-gold" : "text-muted-foreground"
+                    }`
+                  }
                 >
                   {l.label}
                 </Link>

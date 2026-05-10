@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useRouterState } from "@tanstack/react-router";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PageTransitionLoader() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { pathname } = useLocation();
   const [visible, setVisible] = useState(false);
   const [firstRender, setFirstRender] = useState(true);
 
@@ -29,20 +29,14 @@ export default function PageTransitionLoader() {
           transition={{ duration: 0.35, ease: [0.65, 0, 0.35, 1] }}
           className="fixed inset-0 z-[9998] pointer-events-none"
         >
-          {/* Dark veil */}
           <div className="absolute inset-0 bg-heritage-950/85 backdrop-blur-sm" />
-
-          {/* Sweeping gold curtains */}
           <motion.div
             initial={{ x: "-100%" }}
             animate={{ x: "0%" }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.7, ease: [0.85, 0, 0.15, 1] }}
             className="absolute inset-y-0 left-0 w-1/2 origin-left"
-            style={{
-              background:
-                "linear-gradient(90deg, oklch(0.18 0.03 60) 0%, oklch(0.22 0.04 60) 100%)",
-            }}
+            style={{ background: "linear-gradient(90deg, oklch(0.18 0.03 60) 0%, oklch(0.22 0.04 60) 100%)" }}
           />
           <motion.div
             initial={{ x: "100%" }}
@@ -50,13 +44,8 @@ export default function PageTransitionLoader() {
             exit={{ x: "-100%" }}
             transition={{ duration: 0.7, ease: [0.85, 0, 0.15, 1] }}
             className="absolute inset-y-0 right-0 w-1/2"
-            style={{
-              background:
-                "linear-gradient(270deg, oklch(0.18 0.03 60) 0%, oklch(0.22 0.04 60) 100%)",
-            }}
+            style={{ background: "linear-gradient(270deg, oklch(0.18 0.03 60) 0%, oklch(0.22 0.04 60) 100%)" }}
           />
-
-          {/* Center ornament + spinner */}
           <div className="relative z-10 flex h-full w-full items-center justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
@@ -74,9 +63,7 @@ export default function PageTransitionLoader() {
                 />
                 <div className="absolute inset-3 rounded-full gradient-gold opacity-70 animate-glow" />
               </div>
-              <p className="text-[10px] uppercase tracking-[0.5em] text-copper">
-                Memuat halaman
-              </p>
+              <p className="text-[10px] uppercase tracking-[0.5em] text-copper">Memuat halaman</p>
             </motion.div>
           </div>
         </motion.div>

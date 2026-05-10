@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Scroll, Map } from "lucide-react";
 import AnimatedPage from "@/components/AnimatedPage";
@@ -6,19 +7,9 @@ import SectionHeading from "@/components/SectionHeading";
 import batuImg from "@/assets/batu-tulis-detail.jpg";
 import petaImg from "@/assets/museum-peta.jpg";
 
-export const Route = createFileRoute("/jelajahi")({
-  head: () => ({
-    meta: [
-      { title: "Jelajahi Tempat — Heritage Bogor" },
-      { name: "description", content: "Pilih tempat heritage yang ingin Anda jelajahi: Prasasti Batu Tulis atau Museum Peta." },
-    ],
-  }),
-  component: JelajahiPage,
-});
-
 const places = [
   {
-    to: "/batu-tulis" as const,
+    to: "/batu-tulis",
     title: "Prasasti Batu Tulis",
     eyebrow: "Peninggalan Pajajaran",
     desc: "Batu bertulis yang memuat catatan tentang Sri Baduga Maharaja — saksi Kerajaan Sunda Pajajaran.",
@@ -26,7 +17,7 @@ const places = [
     icon: Scroll,
   },
   {
-    to: "/museum-peta" as const,
+    to: "/museum-peta",
     title: "Museum Peta",
     eyebrow: "Kartografi Nusantara",
     desc: "Koleksi peta antik yang menggambarkan bagaimana Nusantara dipetakan oleh dunia berabad-abad lalu.",
@@ -35,7 +26,10 @@ const places = [
   },
 ];
 
-function JelajahiPage() {
+export default function JelajahiPage() {
+  useEffect(() => {
+    document.title = "Jelajahi Tempat — Heritage Bogor";
+  }, []);
   return (
     <AnimatedPage>
       <section className="pt-32 pb-24 min-h-screen">

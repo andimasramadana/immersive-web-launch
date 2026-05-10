@@ -1,17 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import AnimatedPage from "@/components/AnimatedPage";
 import MuseumPetaSection from "@/components/MuseumPetaSection";
 import LocationCard from "@/components/LocationCard";
 import ExploreNav from "@/components/ExploreNav";
 
-export const Route = createFileRoute("/museum-peta")({
-  head: () => ({
-    meta: [
-      { title: "Museum Peta — Heritage" },
-      { name: "description", content: "Koleksi peta antik Nusantara dan lokasi Museum PETA Bogor." },
-    ],
-  }),
-  component: () => (
+export default function MuseumPetaPage() {
+  useEffect(() => {
+    document.title = "Museum Peta — Heritage";
+  }, []);
+  return (
     <AnimatedPage>
       <div className="pt-24 bg-heritage-950">
         <MuseumPetaSection />
@@ -27,5 +24,5 @@ export const Route = createFileRoute("/museum-peta")({
         <ExploreNav nextTo="/batu-tulis" nextLabel="Prasasti Batu Tulis" />
       </div>
     </AnimatedPage>
-  ),
-});
+  );
+}
